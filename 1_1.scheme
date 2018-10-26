@@ -1,0 +1,50 @@
+; 1.1
+
+;; 1.1.1
+
+;;; Scheme is a LISP and as such uses prefix notation.
+
+(+ (* 3
+      (+ (* 2 4)
+         (+ 3 5)))
+   (+ (- 10 7)
+      6))
+
+;; 1.1.2
+
+(define size 2)
+
+;; 1.1.3
+;; 1.1.4
+
+(define (square x) (* x x))
+
+(square 3)
+
+(square 4)
+
+(define (sum-of-squares x y) (+ (square x) (square y)))
+
+(sum-of-squares 3 3)
+
+;; 1.1.6
+
+(define (abs x)
+  (cond ((> x 0) x)
+        ((< x 0) (- x))
+        (else 0)))
+
+;;; Exercise 1.2
+
+(/ (+ 5 4
+      (- 2 (- 3 (+ 6 (/ 4 5)))))
+   (* 3 (- 6 2) (- 2 7)))
+
+;;; Exercise 1.3
+
+(define (sum-of-two-squares a b c)
+  (cond ((and (< a b) (< a c)) (+ (square b) (square c)))
+        ((and (< b a) (< b c)) (+ (square a) (square c)))
+        (else (+ (square a) (square c)))))
+
+(sum-of-two-squares 1 2 3)
