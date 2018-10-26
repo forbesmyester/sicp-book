@@ -48,3 +48,16 @@
         (else (+ (square a) (square c)))))
 
 (sum-of-two-squares 1 2 3)
+
+;;; Exercise 1.4
+
+;;;; The inner `if` returns either the function `+` or the function `-`
+;;;; depending on if the value of `b` is positive or negative. The effect is that
+;;;; if `b` is negative then you are subtracting a negative `b` from `b`, which
+;;;; in effect is `a` plus the absolute `b`
+
+;;; Exercise 1.5
+
+;;;; If it is applicative, then it will enter a recurive loop
+;;;; If it is normal order then it will return 0
+
