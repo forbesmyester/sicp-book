@@ -61,3 +61,47 @@
 ;;;; If it is applicative, then it will enter a recurive loop
 ;;;; If it is normal order then it will return 0
 
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x)
+                 x)))
+
+(define (sqrt x) (sqrt-iter 1.0 x))
+
+(sqrt 4)
+
+;;; Exercise 1.7
+
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
+
+(define (new-sqrt-iter guess x)
+  (new-if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x)
+                 x)))
+
+(define (new-sqrt x) (new-sqrt-iter 1.0 x))
+
+(new-sqrt 4)
+
+(define (try a)
+  (if (= a 0) 0 (/ 1 a)))
+
+(define (new-try a)
+  (new-if (= a 0) 0 (/ 1 a)))
+
+;;;; `if` only evaluates the form that is necessary to get the answer. `new-if`
+;;;; will evaluate all forms passed to it. Thus the above will cause a division
+;;;; by zero and `new-sqrt-iter` enters an infinite loop.
