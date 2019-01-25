@@ -2,6 +2,8 @@
 
 ;;;; The first is recursive, the second is iterative.
 
+;;; Exercise 1.10
+
 (define (A x y)
   (cond ((= y 0) 0)
         ((= x 0) (* 2 y))
@@ -110,4 +112,18 @@
 (recpasc 5 3)
 
 
+;;; 1.14
 
+(count-change 11
+ (cc 11 5)
+  (+
+   (cc 11 4)
+    (+
+      (cc 11 3)
+      (cc -14 4) x
+    )
+   (cc -41 4) x
+  )
+ )
+
+Seems that (stack) space goes up denominations, but time space probably goes with change (because it will cause more non negatives)
